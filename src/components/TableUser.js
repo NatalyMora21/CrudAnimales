@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const TableUser = ({ animals }) => {
+const TableUser = ({ animals,deleteAnimal, updateAnimal}) => {
 
     return (
         <>
@@ -25,8 +25,8 @@ const TableUser = ({ animals }) => {
                                 <td>{animal.name}</td>
                                 <td>{animal.weight}</td>
                                 <td>{animal.type}</td>
-                                <td><button type="button" class="btn btn-warning">Update</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <button className="button muted-button" onClick={()=> {updateAnimal(animal)}}>Edit</button>
+                                <button className="button muted-button" onClick={()=> {deleteAnimal(animal.id)}}>Delete</button>
                             </tr>
                         ))
                     }

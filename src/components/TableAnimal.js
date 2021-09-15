@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const TableUser = ({ animals,deleteAnimal, updateAnimal}) => {
+const TableAnimal = ({ animals,deleteAnimal, updateAnimal}) => {
 
     return (
         <>
@@ -39,4 +39,4 @@ const TableUser = ({ animals,deleteAnimal, updateAnimal}) => {
 }
 
 
-export default TableUser;
+export default TableAnimal;

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 
-const EditUserForm = ({ currentUser, updateUser }) => {
+const EditAnimalForm = ({ currentUser, updateUser }) => {
 
     const { register, errors, handleSubmit, setValue } = useForm({
         defaultValues: currentUser
@@ -45,7 +45,7 @@ const EditUserForm = ({ currentUser, updateUser }) => {
                 </div>
                 <div className="col-sm-6">
                     <label for="country" className="form-label">Type</label>
-                    <select className="form-select" name="ocupacion" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
+                    <select className="form-select" name="type" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
                         <option value="Vertebrates">Vertebrates</option>
                         <option value="invertebrates">invertebrates</option>
                     </select>
@@ -58,4 +58,4 @@ const EditUserForm = ({ currentUser, updateUser }) => {
     )
 }
 
-export default EditUserForm
+export default EditAnimalForm;

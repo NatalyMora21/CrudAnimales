@@ -1,41 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import TableUser from './TableUser';
 
-const FormUser = () => {
+const FormAnimal = ({addAnimal}) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    //State
-    const [entradas, setEntradas] = useState([])
-    const [animals, setAnimals] = useState([]);
-
-    const onSubmit = (data, e) => {
+    const onSubmit = async (data, e) => {
         //LLamar a la base de datos para guardadr
-        setEntradas([...entradas, data]);
+        addAnimal(data)
         e.target.reset();
-    }
-
-    useEffect(
-        () => {
-
-            listAnimals();
-
-        },[],
-    );
-
-
-    const listAnimals = () => {
-
-    }
-
-
-    const deleteAnimal = (id) => {
-
-    }
-
-    const updateAnimal = (id, updateUser) => {
-
     }
 
     return (
@@ -57,28 +30,25 @@ const FormUser = () => {
                         <label for="weight" className="form-label">Weight</label>
                         <input type="number" placeholder="Enter animal weight" className="form-control" name="weight" {...register('Weight', { required: true })} />
                         <div className="py-3">
-                            {errors.name?.type === 'required' && "El campo nombre es requerido"}
-                            {errors.name?.type === 'pattern' && "Solo deben ser numeros"}
+                            {errors.name?.type === 'required' && "requires a value greater than zero"}
+                            {errors.name?.type === 'pattern' && "Must be numbers"}
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <label for="country" className="form-label">Type</label>
-                        <select className="form-select" name="ocupacion" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
+                        <select className="form-select" name="type" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
                             <option value="Vertebrates">Vertebrates</option>
                             <option value="invertebrates">invertebrates</option>
-
-                        </select>
-                        <div className="invalid-feedback">
-                            Please select a valid country.
-                        </div>
+                       </select>
+                       
                     </div>
-                    <hr className="my-4" />
-                    <button className="btn btn-primary">Guardar</button>
+                    < hr className="my-4" />
+                    <button className="btn btn-primary">Save</button>
                 </div>
             </form>
-            <TableUser animals={animals} />
+            
         </>
     )
 }
 
-export default FormUser;
+export default FormAnimal;

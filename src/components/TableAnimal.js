@@ -5,7 +5,7 @@ const TableAnimal = ({ animals,deleteAnimal, editRow}) => {
 
     return (
         <>
-            <h1>List of animals</h1>
+            <h1 className="py-6">List of animals</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -25,8 +25,8 @@ const TableAnimal = ({ animals,deleteAnimal, editRow}) => {
                                 <td>{animal.name}</td>
                                 <td>{animal.weight}</td>
                                 <td>{animal.type}</td>
-                                <button className="button muted-button" onClick={()=> {editRow(animal)}}>Edit</button>
-                                <button className="button muted-button" onClick={()=> {deleteAnimal(animal.id)}}>Delete</button>
+                                <button className="btn btn-danger"  onClick={()=> {editRow(animal)}}>Edit</button>
+                                <button className="btn btn-warning" onClick={()=> {deleteAnimal(animal.id)}}>Delete</button>
                             </tr>
                         ))
                     }

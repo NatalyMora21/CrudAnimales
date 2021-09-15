@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const TableAnimal = ({ animals,deleteAnimal, updateAnimal}) => {
+const TableAnimal = ({ animals,deleteAnimal, editRow}) => {
 
     return (
         <>
@@ -25,7 +25,7 @@ const TableAnimal = ({ animals,deleteAnimal, updateAnimal}) => {
                                 <td>{animal.name}</td>
                                 <td>{animal.weight}</td>
                                 <td>{animal.type}</td>
-                                <button className="button muted-button" onClick={()=> {updateAnimal(animal)}}>Edit</button>
+                                <button className="button muted-button" onClick={()=> {editRow(animal)}}>Edit</button>
                                 <button className="button muted-button" onClick={()=> {deleteAnimal(animal.id)}}>Delete</button>
                             </tr>
                         ))

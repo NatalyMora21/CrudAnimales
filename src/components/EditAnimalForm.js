@@ -3,26 +3,31 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 
-const EditAnimalForm = ({ currentUser, updateUser }) => {
+const EditAnimalForm = ({ currentAnimal, updateAnimal }) => {
+
+    console.log(currentAnimal)
 
     const { register, errors, handleSubmit, setValue } = useForm({
-        defaultValues: currentUser
+        defaultValues: currentAnimal
     });
 
-    setValue('name', currentUser.name)
-    setValue('username', currentUser.username)
+    setValue('name', currentAnimal.name)
+    setValue('weight', currentAnimal.weight)
+    setValue('type', currentAnimal.type)
 
     const onSubmit = (data, e) => {
 
-        updateUser(currentUser.id, data)
+        updateAnimal(currentAnimal.id, data)
 
         //VERRR
-        data.id = currentUser.id;
+        data.id = currentAnimal.id;
         console.log(data);
         e.target.reset();
     }
 
     return (
+        <>
+        <h1>Editar</h1>
         <form className="needs-validation" onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
                 <div className="col-sm-6">
@@ -30,22 +35,19 @@ const EditAnimalForm = ({ currentUser, updateUser }) => {
                         className="form-label">Name</label>
                     <input type="text" placeholder="Enter animal name" className="form-control" name="name" {...register('name', { required: true, maxLength: 20, })} />
                     <div className="py-3" >
-                        {errors.name?.type === 'required' && "The name field is required"}
-                        {errors.name?.type === 'pattern' && "The name must not contain special characters"}
-                        {errors.name?.type === 'maxLength' && "The name must not be longer than 20 characters"}
+            
                     </div>
                 </div>
                 <div className="col-sm-6"  >
                     <label for="weight" className="form-label">Weight</label>
-                    <input type="number" placeholder="Enter animal weight" className="form-control" name="weight" {...register('Weight', { required: true })} />
+                    <input type="number" placeholder="Enter animal weight" className="form-control" name="weight" {...register('weight', { required: true })} />
                     <div className="py-3">
-                        {errors.name?.type === 'required' && "requires a value greater than zero"}
-                        {errors.name?.type === 'pattern' && "Must be numbers"}
+                 
                     </div>
                 </div>
                 <div className="col-sm-6">
                     <label for="country" className="form-label">Type</label>
-                    <select className="form-select" name="type" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
+                    <select className="form-select" name="type" {...register('type', { required: true, message: "Campo requerido" })}>
                         <option value="Vertebrates">Vertebrates</option>
                         <option value="invertebrates">invertebrates</option>
                     </select>
@@ -55,6 +57,7 @@ const EditAnimalForm = ({ currentUser, updateUser }) => {
                 <button className="btn btn-primary">Save</button>
             </div>
         </form>
+        </>
     )
 }
 

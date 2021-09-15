@@ -28,7 +28,7 @@ const FormAnimal = ({addAnimal}) => {
                     </div>
                     <div className="col-sm-6"  >
                         <label for="weight" className="form-label">Weight</label>
-                        <input type="number" placeholder="Enter animal weight" className="form-control" name="weight" {...register('Weight', { required: true })} />
+                        <input type="number" placeholder="Enter animal weight" className="form-control" name="weight" {...register('weight', { required: true })} />
                         <div className="py-3">
                             {errors.name?.type === 'required' && "requires a value greater than zero"}
                             {errors.name?.type === 'pattern' && "Must be numbers"}
@@ -36,7 +36,7 @@ const FormAnimal = ({addAnimal}) => {
                     </div>
                     <div className="col-sm-6">
                         <label for="country" className="form-label">Type</label>
-                        <select className="form-select" name="type" {...register('ocupacion', { required: true, message: "Campo requerido" })}>
+                        <select className="form-select" name="type" {...register('type', { required: true, message: "Campo requerido" })}>
                             <option value="Vertebrates">Vertebrates</option>
                             <option value="invertebrates">invertebrates</option>
                        </select>
